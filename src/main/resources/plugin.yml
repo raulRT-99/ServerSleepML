@@ -1,0 +1,5 @@
+name: ServerSleepML
+version: '${version}'
+
+main: org.raul.plugins.serverSleepML.ServerSleepML
+api-version: '1.20'
