@@ -8,8 +8,8 @@ public class FrenchMessage extends LanguageMessages{
     }
 
     @Override
-    public String notEnoughPlayers(int totalPlayers, int sleepingPlayers) {
-        return null;
+    public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
+        return "";
     }
 
     @Override
@@ -20,6 +20,16 @@ public class FrenchMessage extends LanguageMessages{
     @Override
     public String nightPassed() {
         return null;
+    }
+
+    @Override
+    public String serverStartMessage() {
+        return "";
+    }
+
+    @Override
+    public String notValidNumber() {
+        return "";
     }
 
     @Override

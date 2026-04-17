@@ -8,22 +8,37 @@ public class SpanishMessage extends LanguageMessages {
     }
 
     @Override
-    public String notEnoughPlayers(int totalPlayers, int sleepingPlayers) {
-        return null;
+    public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
+        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) /100);
+        if(config.isShowPercent()){
+            return "§fHay §e"+percent+"%§f de jugadores durmiendo, se requieren §e"+config.getPercent()+"%§f por lo menos.";
+        }else{
+            return "§fHay §e"+sleepingPlayers+"§f jugadores durmiendo, se requieren por lo menos §e"+atLeast+".";
+        }
     }
 
     @Override
     public String sleepingServer() {
-        return null;
+        return "§aPasando la noche...";
     }
 
     @Override
     public String nightPassed() {
-        return null;
+        return "§aBuenos días";
+    }
+
+    @Override
+    public String serverStartMessage() {
+        return "§9Gracias por usar mi plugin\nAtte: raulRT99 (Raul Reyes)";
+    }
+
+    @Override
+    public String notValidNumber() {
+        return "§cEscribe un número válido";
     }
 
     @Override
     public String playerSleeping(String player) {
-        return null;
+        return "§fBuenas noches §6"+player;
     }
 }

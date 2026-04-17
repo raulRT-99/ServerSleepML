@@ -9,9 +9,11 @@ public abstract class LanguageMessages {
         this.config = config;
     }
 
-    public abstract String notEnoughPlayers(int totalPlayers, int sleepingPlayers);
+    public abstract String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent);
     public abstract String sleepingServer();
     public abstract String playerSleeping(String player);
     public abstract String nightPassed();
+    public abstract String serverStartMessage();
+    public abstract String notValidNumber();
 
 }
