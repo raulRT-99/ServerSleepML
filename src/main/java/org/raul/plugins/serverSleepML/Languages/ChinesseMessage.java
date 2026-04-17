@@ -10,31 +10,36 @@ public class ChinesseMessage extends LanguageMessages {
 
     @Override
     public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
-        return "";
+        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) / 100);
+        if (config.isShowPercent()) {
+            return "§f有§e" + percent + "%§f玩家在睡觉。至少需要§e" + config.getPercent() + "%§f。";
+        } else {
+            return "§f有§e" + sleepingPlayers + "§f个玩家在睡觉。至少需要§e" + atLeast + "个。";
+        }
     }
 
     @Override
     public String sleepingServer() {
-        return null;
+        return "§a跳过夜晚中...";
     }
 
     @Override
     public String nightPassed() {
-        return null;
+        return "§a早上好！";
     }
 
     @Override
     public String serverStartMessage() {
-        return "";
+        return "§9感谢使用我的插件！\n§7希望你喜欢 --- raulRT99 (Raul Reyes)";
     }
 
     @Override
     public String notValidNumber() {
-        return "";
+        return "§c请输入有效数字";
     }
 
     @Override
     public String playerSleeping(String player) {
-        return null;
+        return "§f晚安 §6" + player + "！";
     }
 }

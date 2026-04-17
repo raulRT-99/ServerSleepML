@@ -9,11 +9,11 @@ public class SpanishMessage extends LanguageMessages {
 
     @Override
     public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
-        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) /100);
-        if(config.isShowPercent()){
-            return "§fHay §e"+percent+"%§f de jugadores durmiendo, se requieren §e"+config.getPercent()+"%§f por lo menos.";
-        }else{
-            return "§fHay §e"+sleepingPlayers+"§f jugadores durmiendo, se requieren por lo menos §e"+atLeast+".";
+        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) / 100);
+        if (config.isShowPercent()) {
+            return "§fHay §e" + percent + "%§f de jugadores durmiendo. Se requieren §e" + config.getPercent() + "%§f por lo menos.";
+        } else {
+            return "§fHay §e" + sleepingPlayers + "§f jugadores durmiendo. Se requieren por lo menos §e" + atLeast + ".";
         }
     }
 
@@ -29,7 +29,7 @@ public class SpanishMessage extends LanguageMessages {
 
     @Override
     public String serverStartMessage() {
-        return "§9Gracias por usar mi plugin\nAtte: raulRT99 (Raul Reyes)";
+        return "§9Gracias por usar mi plugin!\n§7Espero lo disfrutes --- raulRT99 (Raul Reyes)";
     }
 
     @Override
@@ -39,6 +39,6 @@ public class SpanishMessage extends LanguageMessages {
 
     @Override
     public String playerSleeping(String player) {
-        return "§fBuenas noches §6"+player;
+        return "§fBuenas noches §6" + player;
     }
 }

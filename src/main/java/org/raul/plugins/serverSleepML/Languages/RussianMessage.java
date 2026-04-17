@@ -2,38 +2,43 @@ package org.raul.plugins.serverSleepML.Languages;
 
 import org.raul.plugins.serverSleepML.Functionallity.Config;
 
-public class RussianMessage extends LanguageMessages{
+public class RussianMessage extends LanguageMessages {
     protected RussianMessage(Config config) {
         super(config);
     }
 
     @Override
     public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
-        return "";
+        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) / 100);
+        if (config.isShowPercent()) {
+            return "§f§e" + percent + "%§f игроков спит. Нужно минимум §e" + config.getPercent() + "%§f.";
+        } else {
+            return "§f§e" + sleepingPlayers + "§f игроков спит. Нужно минимум §e" + atLeast + ".";
+        }
     }
 
     @Override
     public String sleepingServer() {
-        return null;
+        return "§aПропуск ночи...";
     }
 
     @Override
     public String nightPassed() {
-        return null;
+        return "§aДоброе утро!";
     }
 
     @Override
     public String serverStartMessage() {
-        return "";
+        return "§9Спасибо за использование моего плагина!\n§7Надеюсь тебе понравится --- raulRT99 (Raul Reyes)";
     }
 
     @Override
     public String notValidNumber() {
-        return "";
+        return "§cВведите корректное число";
     }
 
     @Override
     public String playerSleeping(String player) {
-        return null;
+        return "§fСпокойной ночи §6" + player + "§f!";
     }
 }

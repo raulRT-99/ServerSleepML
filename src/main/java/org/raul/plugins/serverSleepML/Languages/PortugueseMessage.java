@@ -2,38 +2,43 @@ package org.raul.plugins.serverSleepML.Languages;
 
 import org.raul.plugins.serverSleepML.Functionallity.Config;
 
-public class PortugueseMessage extends LanguageMessages{
+public class PortugueseMessage extends LanguageMessages {
     protected PortugueseMessage(Config config) {
         super(config);
     }
 
     @Override
     public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
-        return "";
+        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) / 100);
+        if (config.isShowPercent()) {
+            return "§fHá §e" + percent + "%§f dos jogadores dormindo. São necessários pelo menos §e" + config.getPercent() + "%§f.";
+        } else {
+            return "§fHá §e" + sleepingPlayers + "§f jogadores dormindo. São necessários pelo menos §e" + atLeast + ".";
+        }
     }
 
     @Override
     public String sleepingServer() {
-        return null;
+        return "§aPulando a noite...";
     }
 
     @Override
     public String nightPassed() {
-        return null;
+        return "§aBom dia!";
     }
 
     @Override
     public String serverStartMessage() {
-        return "";
+        return "§9Obrigado por usar meu plugin!\n§7Espero que goste --- raulRT99 (Raul Reyes)";
     }
 
     @Override
     public String notValidNumber() {
-        return "";
+        return "§cDigite um número válido";
     }
 
     @Override
     public String playerSleeping(String player) {
-        return null;
+        return "§fBoa noite §6" + player + "!";
     }
 }
