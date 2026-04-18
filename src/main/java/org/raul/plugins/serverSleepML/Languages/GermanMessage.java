@@ -4,7 +4,7 @@ import org.raul.plugins.serverSleepML.Functionallity.Config;
 
 public class GermanMessage extends LanguageMessages {
 
-    protected GermanMessage(Config config) {
+    public GermanMessage(Config config) {
         super(config);
     }
 

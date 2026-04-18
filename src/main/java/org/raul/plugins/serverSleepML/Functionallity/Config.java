@@ -5,10 +5,12 @@ public class Config {
     private int percent;
     private final boolean showPercent;
 
-    public Config(String lang, int percent, boolean showPercent) {
+    public Config(String lang, int percent, String show) {
         this.lang = lang;
         this.percent = percent;
-        this.showPercent = showPercent;
+        if(show.equalsIgnoreCase("percent")){
+            showPercent = true;
+        }else showPercent = !show.equalsIgnoreCase("amount");
     }
 
     public String getLang() {

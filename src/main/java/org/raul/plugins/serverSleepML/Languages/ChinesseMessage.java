@@ -4,7 +4,7 @@ import org.raul.plugins.serverSleepML.Functionallity.Config;
 
 public class ChinesseMessage extends LanguageMessages {
 
-    protected ChinesseMessage(Config config) {
+    public ChinesseMessage(Config config) {
         super(config);
     }
 

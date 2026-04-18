@@ -4,7 +4,7 @@ import org.raul.plugins.serverSleepML.Functionallity.Config;
 
 public class JapaneseLanguage extends LanguageMessages {
 
-    protected JapaneseLanguage(Config config) {
+    public JapaneseLanguage(Config config) {
         super(config);
     }
 

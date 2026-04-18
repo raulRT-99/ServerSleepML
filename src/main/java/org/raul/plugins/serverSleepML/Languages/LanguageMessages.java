@@ -5,7 +5,7 @@ import org.raul.plugins.serverSleepML.Functionallity.Config;
 public abstract class LanguageMessages {
     protected final Config config;
 
-    protected LanguageMessages(Config config) {
+    public LanguageMessages(Config config) {
         this.config = config;
     }
 

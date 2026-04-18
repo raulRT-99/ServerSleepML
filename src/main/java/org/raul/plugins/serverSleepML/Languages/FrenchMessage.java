@@ -3,7 +3,8 @@ package org.raul.plugins.serverSleepML.Languages;
 import org.raul.plugins.serverSleepML.Functionallity.Config;
 
 public class FrenchMessage extends LanguageMessages {
-    protected FrenchMessage(Config config) {
+
+    public FrenchMessage(Config config) {
         super(config);
     }
 
