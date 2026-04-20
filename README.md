@@ -19,3 +19,6 @@ with this plugin you can going to sleep in servers with a certain percent to com
 #percent -> "There are 33% of players sleeping, it needs at least 50%"  
 #amount -> "There are 3 players sleeping, it needs at least 5"  
 `show: "percent"`  
+
+You can modify percent in-game by the command `/sleeppercent <number:int>`
+    
