@@ -1,5 +1,5 @@
 # ServerSleepML
-with this plugin you can going to sleep in servers with a certain percent to complete skiping night, with multilanguage description and support
+With this plugin you can going to sleep in servers with a certain percent to complete skiping night, with multilanguage description and support
   
 #Select your preferred language to show the messages  
 #es - español  
