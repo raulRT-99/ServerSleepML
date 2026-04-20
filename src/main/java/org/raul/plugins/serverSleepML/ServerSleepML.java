@@ -2,6 +2,8 @@ package org.raul.plugins.serverSleepML;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.raul.plugins.serverSleepML.Functionallity.Config;
+import org.raul.plugins.serverSleepML.Functionallity.SleepCommand;
+import org.raul.plugins.serverSleepML.Functionallity.SleepEvent;
 import org.raul.plugins.serverSleepML.Languages.*;
 
 public final class ServerSleepML extends JavaPlugin {
@@ -19,9 +21,13 @@ public final class ServerSleepML extends JavaPlugin {
         }
 
         LanguageMessages langMsg = selectLanguage(config.getLang());
+
+        SleepCommand sleepCommand = new SleepCommand(langMsg, this, config);
+        getCommand("sleeppercent").setExecutor(sleepCommand);
+
+        getServer().getPluginManager().registerEvents(new SleepEvent(this, config, langMsg), this);
+
         this.getLogger().info(langMsg.serverStartMessage());
-
-
 
     }
 
@@ -35,7 +41,6 @@ public final class ServerSleepML extends JavaPlugin {
         ServerSleepML.config = new Config(getConfig().getString("lang", "en"),
                 getConfig().getInt("percent", 50),
                 getConfig().getString("show", "percent"));
-
     }
 
     private LanguageMessages selectLanguage(String lang) {

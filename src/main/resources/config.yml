@@ -7,7 +7,7 @@
 #jp - 日本語
 #ru - русский
 #pt - português
-lang: "es"
+lang: "en"
 
 #Set percent of player sleeping to pass night (integer)
 percent: 50

@@ -10,7 +10,7 @@ public class JapaneseLanguage extends LanguageMessages {
 
     @Override
     public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
-        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) / 100);
+        int atLeast = (int) Math.ceil((double) (config.getPercent() * totalPlayers) / 100);
         if (config.isShowPercent()) {
             return "§fプレイヤーの§e" + percent + "%§fが寝ています。最低§e" + config.getPercent() + "%§f必要です。";
         } else {
@@ -36,6 +36,11 @@ public class JapaneseLanguage extends LanguageMessages {
     @Override
     public String notValidNumber() {
         return "§c有効な数字を入力してください";
+    }
+
+    @Override
+    public String newPercent(int newPercent) {
+        return "睡眠パーセンテージが "+newPercent+" に変更されました";
     }
 
     @Override

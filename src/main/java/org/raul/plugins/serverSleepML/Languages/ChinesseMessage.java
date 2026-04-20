@@ -10,7 +10,7 @@ public class ChinesseMessage extends LanguageMessages {
 
     @Override
     public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
-        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) / 100);
+        int atLeast = (int) Math.ceil((double) (config.getPercent() * totalPlayers) / 100);
         if (config.isShowPercent()) {
             return "§f有§e" + percent + "%§f玩家在睡觉。至少需要§e" + config.getPercent() + "%§f。";
         } else {
@@ -36,6 +36,11 @@ public class ChinesseMessage extends LanguageMessages {
     @Override
     public String notValidNumber() {
         return "§c请输入有效数字";
+    }
+
+    @Override
+    public String newPercent(int newPercent) {
+        return "睡眠百分比已更改为："+newPercent;
     }
 
     @Override

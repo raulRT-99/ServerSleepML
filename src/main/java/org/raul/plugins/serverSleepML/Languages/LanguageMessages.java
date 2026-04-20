@@ -15,5 +15,6 @@ public abstract class LanguageMessages {
     public abstract String nightPassed();
     public abstract String serverStartMessage();
     public abstract String notValidNumber();
+    public abstract String newPercent(int newPercent);
 
 }

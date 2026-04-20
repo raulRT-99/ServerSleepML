@@ -19,8 +19,8 @@ public class SleepEvent implements Listener {
     private final JavaPlugin plugin;
     private Config config;
     private final LanguageMessages languageMsg;
-    private static Map<World, Boolean> almostSleeping = new HashMap<>();
     private static Set<Player> sleptTonight = new HashSet<>();
+    private boolean isNight = false;
 
     public SleepEvent(JavaPlugin plugin, Config config, LanguageMessages languageMsg) {
         this.plugin = plugin;
@@ -35,6 +35,7 @@ public class SleepEvent implements Listener {
         Player player = bedEntry.getPlayer();
         World world = bedEntry.getPlayer().getWorld();
 
+        isNight = world.getTime() >= 13000;
         player.sendMessage(languageMsg.playerSleeping(player.getName()));
 
         sleptTonight.add(player);
@@ -52,8 +53,6 @@ public class SleepEvent implements Listener {
         Player player = bedLeave.getPlayer();
         World world = bedLeave.getPlayer().getWorld();
 
-        sleptTonight.remove(player);
-
         List<Player> players = world.getPlayers();
         if (players.isEmpty()) return;
 
@@ -61,15 +60,15 @@ public class SleepEvent implements Listener {
                 .filter(LivingEntity::isSleeping)
                 .count();
 
-        if (almostSleeping.getOrDefault(world, false)) {
-            world.setTime(13000);
-            almostSleeping.put(world, false);
+        double percentSleeping = (double) (sleepingCount - 1) / players.size() * 100;
+
+        if (percentSleeping < config.getPercent() && isNight) {
             broadcastMsg(world, languageMsg.notEnoughPlayers(players.size(),
-                    (int) sleepingCount, config.getPercent()));
+                    (int) sleepingCount, (int) Math.round(percentSleeping)));
             return;
         }
 
-        checkSleepPercentage(world);
+        sleptTonight.remove(player);
     }
 
     private void checkSleepPercentage(World world) {
@@ -82,14 +81,14 @@ public class SleepEvent implements Listener {
 
         double percentSleeping = (double) sleepingCount / players.size() * 100;
 
-        if (sleepingCount >= 1) {
-            broadcastMsg(world, languageMsg.notEnoughPlayers(players.size(),
-                    (int) sleepingCount, config.getPercent()));
-        }
-
-        if (percentSleeping >= config.getPercent()) {
+        if (percentSleeping >= config.getPercent() && sleepingCount >= 1) {
             broadcastMsg(world, languageMsg.sleepingServer());
-            world.setTime(1000);
+
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                world.setTime(900);
+                isNight = false;
+            }, 15L);
+
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
                 for (Player p : sleptTonight) {
                     if (p != null && p.isOnline()) {
@@ -98,7 +97,13 @@ public class SleepEvent implements Listener {
                 }
                 sleptTonight.clear();
             }, 20L);
+
+        } else {
+            broadcastMsg(world, languageMsg.notEnoughPlayers(players.size(),
+                    (int) sleepingCount, (int) Math.round(percentSleeping)));
         }
+
+
     }
 
     private void broadcastMsg(World world, String msg) {

@@ -3,3 +3,12 @@ version: '${version}'
 
 main: org.raul.plugins.serverSleepML.ServerSleepML
 api-version: '1.20'
+author: "raulRT99 (Raul Reyes)"
+
+commands:
+  sleeppercent:
+    permission: ServerSleepML.permission.sleeppercent
+    permission-message: "You don not have enough privileges to use this command"
+    description: "Manage percent of server sleep"
+    usage: "How to use it: /serversleep <number:int>"
+    default: op

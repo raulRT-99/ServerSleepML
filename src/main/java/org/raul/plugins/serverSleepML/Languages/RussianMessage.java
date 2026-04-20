@@ -10,7 +10,7 @@ public class RussianMessage extends LanguageMessages {
 
     @Override
     public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
-        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) / 100);
+        int atLeast = (int) Math.ceil((double) (config.getPercent() * totalPlayers) / 100);
         if (config.isShowPercent()) {
             return "§f§e" + percent + "%§f игроков спит. Нужно минимум §e" + config.getPercent() + "%§f.";
         } else {
@@ -36,6 +36,11 @@ public class RussianMessage extends LanguageMessages {
     @Override
     public String notValidNumber() {
         return "§cВведите корректное число";
+    }
+
+    @Override
+    public String newPercent(int newPercent) {
+        return "Процент для сна изменен на: "+newPercent;
     }
 
     @Override

@@ -10,7 +10,7 @@ public class SpanishMessage extends LanguageMessages {
 
     @Override
     public String notEnoughPlayers(int totalPlayers, int sleepingPlayers, int percent) {
-        int atLeast = (int) Math.ceil((double) (percent * totalPlayers) / 100);
+        int atLeast = (int) Math.ceil((double) (config.getPercent() * totalPlayers) / 100);
         if (config.isShowPercent()) {
             return "§fHay §e" + percent + "%§f de jugadores durmiendo. Se requieren §e" + config.getPercent() + "%§f por lo menos.";
         } else {
@@ -36,6 +36,11 @@ public class SpanishMessage extends LanguageMessages {
     @Override
     public String notValidNumber() {
         return "§cEscribe un número válido";
+    }
+
+    @Override
+    public String newPercent(int newPercent) {
+        return "El porcentaje para dormir ah sido cambiado a: "+newPercent;
     }
 
     @Override
